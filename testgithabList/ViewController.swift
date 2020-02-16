@@ -9,23 +9,23 @@
 import UIKit
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource{
-   
-
-var myTablevaiv = UITableView()
-let indentifire = "myCeel"
+    
+    
+    var myTablevaiv = UITableView()
+    let indentifire = "myCeel"
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-createTable()
+        
+        createTable()
     }
-
+    
     func createTable() {
-
-            self .myTablevaiv = UITableView(frame: view.bounds, style: .plain)
+        
+        self .myTablevaiv = UITableView(frame: view.bounds, style: .plain)
         myTablevaiv .register(UITableViewCell.self, forCellReuseIdentifier: indentifire)
-            self .myTablevaiv.delegate = self
+        self .myTablevaiv.delegate = self
         self.myTablevaiv.dataSource = self
         
         myTablevaiv.autoresizingMask = [.flexibleWidth,.flexibleHeight]
@@ -33,29 +33,33 @@ createTable()
         
         view.addSubview(myTablevaiv)
         
-        }
-//MARK: -UITableViewDataSource
+    }
+    
+    //MARK: - UITableViewDataSource
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-      return 3
-    }
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch section {
-    case 0:
         return 3
-    case 1:
-        return 5
-    case 2:
-        return 8
-    default:
-        break
+        
     }
-    return 0
-       }
-       
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 3
+        case 1:
+            return 5
+        case 2:
+            return 8
+        default:
+            break
+        }
+        return 0
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-           
-let cell = tableView.dequeueReusableCell(withIdentifier: indentifire, for: indexPath)
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: indentifire, for: indexPath)
         
         cell.textLabel?.text = "section = \(indexPath.section) cell = \(indexPath.row)"
         
@@ -72,15 +76,17 @@ let cell = tableView.dequeueReusableCell(withIdentifier: indentifire, for: index
         
         return cell
         
-       }
-    //MARK: -UITableVaiwDelegate
+    }
+    
+    //MARK: - UITableVaiwDelegate
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
     
-       
-    }
     
+}
+
 
 
 
